@@ -1,11 +1,19 @@
-
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { categories, mockups } from '@/data/mockData';
-import { Search, Download, ArrowRight, Sparkles } from 'lucide-react';
+import { Search, Download, ArrowRight, Sparkles, Smartphone, Package, Palette, Shirt, FileText, Share2 } from 'lucide-react';
+
+const iconMap = {
+  Smartphone,
+  Package,
+  Palette,
+  Shirt,
+  FileText,
+  Share2,
+};
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -66,7 +74,6 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Decorative elements */}
         <div className="absolute top-20 left-10 w-20 h-20 bg-yellow-300/20 rounded-full blur-xl"></div>
         <div className="absolute bottom-20 right-10 w-32 h-32 bg-purple-300/20 rounded-full blur-xl"></div>
       </section>
@@ -84,30 +91,36 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.map((category) => (
-              <Link
-                key={category.id}
-                to={`/category/${category.id}`}
-                className="group relative bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-1"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative text-center">
-                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl text-white group-hover:scale-110 transition-transform duration-300">
-                    {category.icon}
+            {categories.map((category) => {
+              const IconComponent = iconMap[category.icon as keyof typeof iconMap];
+              return (
+                <Link
+                  key={category.id}
+                  to={`/category/${category.id}`}
+                  className="group relative bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-1"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative text-center">
+                    <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent 
+                        size={32} 
+                        className="group-hover:animate-pulse transition-all duration-300" 
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
+                      {category.name}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed mb-6">
+                      {category.description}
+                    </p>
+                    <div className="inline-flex items-center text-blue-600 font-semibold group-hover:text-purple-600 transition-colors duration-300">
+                      Explore {category.name}
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
-                    {category.name}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed mb-6">
-                    {category.description}
-                  </p>
-                  <div className="inline-flex items-center text-blue-600 font-semibold group-hover:text-purple-600 transition-colors duration-300">
-                    Explore {category.name}
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

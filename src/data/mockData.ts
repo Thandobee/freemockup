@@ -1,40 +1,39 @@
-
 export const categories = [
   {
     id: 'devices',
     name: 'Device Mockups',
     description: 'Professional device mockups for phones, tablets, laptops, and desktop displays',
-    icon: '📱',
+    icon: 'Smartphone',
   },
   {
     id: 'packaging',
     name: 'Packaging',
     description: 'Premium packaging mockups for products, boxes, bags, and containers',
-    icon: '📦',
+    icon: 'Package',
   },
   {
     id: 'branding',
     name: 'Branding',
     description: 'Corporate identity mockups including business cards, letterheads, and logos',
-    icon: '🎨',
+    icon: 'Palette',
   },
   {
     id: 'apparel',
     name: 'Apparel',
     description: 'Fashion and clothing mockups for t-shirts, hoodies, caps, and accessories',
-    icon: '👕',
+    icon: 'Shirt',
   },
   {
     id: 'print',
     name: 'Print Design',
     description: 'Print material mockups for posters, flyers, brochures, and magazines',
-    icon: '📄',
+    icon: 'FileText',
   },
   {
     id: 'social',
     name: 'Social Media',
     description: 'Social media mockups for posts, stories, covers, and digital campaigns',
-    icon: '📲',
+    icon: 'Share2',
   },
 ];
 
